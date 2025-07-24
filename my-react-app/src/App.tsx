@@ -4,14 +4,17 @@
 
 import './App.css';
 //import Dashboard from "./pages/Dashboard";
-import ManagedSkills from "./pages/programmer/skills";
+// import ManagedSkills from "./pages/programmer/skills";
+import { Toaster } from "sonner"
+
 
 import './App.css'
 //import Registration from "./auth/Registration.tsx";
-import ProfilePage from "./pages/Dashboard.tsx";
+
 import Dashboard from "./pages/Dashboard";
 import {Route, Routes } from 'react-router-dom'
-import SignUp from "@/pages/SignUp.tsx";
+import SignUp from "@/pages/client/SignUp.tsx";
+// import ProfilePage from "@/pages/programmer/ProgrammerProfile.tsx";
 // import SignUp from "@/pages/SignUp.tsx";
 // import {LogIn} from "lucide-react";
 
@@ -23,12 +26,10 @@ function App() {
 
   return (
     <>
-   
-<!--       <ProfilePage/> -->
 
-
+        {/*<ProfilePage/>*/}
       {/*<Registration/>*/}
-        <ManagedSkills/>
+      {/*  <ManagedSkills/>*/}
         <Routes>
             <Route
             path = '/'
@@ -43,6 +44,7 @@ function App() {
             {/*    element = {<LogIn/>}*/}
             {/*/>*/}
         </Routes>
+        <Toaster richColors/>
     </>
   )
 }
