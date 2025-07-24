@@ -1,4 +1,4 @@
-import { Project } from "@/data/projects"
+import { Project } from "@/data/Projects"
 
 export function ProjectList({ projects }: { projects: Project[] }) {
   return (

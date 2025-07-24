@@ -4,13 +4,13 @@
 
 import './App.css';
 //import Dashboard from "./pages/Dashboard";
-import ManagedSkills from "./pages/programmer/skills";
+import ManagedSkills from "./pages/programmer/Skills";
 
 import SignUp from "@/pages/SignUp.tsx";
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Dashboard from "./pages/Dashboard";
-import BrowseProjects from "./pages/programmer/browseProjects";
+import BrowseProjects from "./pages/programmer/BrowseProjects";
 // import SignUp from "@/pages/SignUp.tsx";
 // import {LogIn} from "lucide-react";
 

@@ -1,8 +1,8 @@
 // pages/BrowseProjects.tsx
 import { Input } from "@/components/ui/input"
-import { projects } from "@/data/projects"
+import { projects } from "@/data/Projects"
 import { Listbox } from "@headlessui/react"
-import { ChevronDown, Coins, Eye, Hourglass, Send } from "lucide-react"
+import { ChevronDown, Coins, Eye, Hourglass, SearchIcon, Send } from "lucide-react"
 import { useState } from "react"
 
 export default function BrowseProjects() {
@@ -37,13 +37,17 @@ export default function BrowseProjects() {
 
       {/* Filter Panel */}
       <div className="border rounded-md p-4 bg-white space-y-4 mb-8">
-        <p className="font-semibold text-lg">🔎 Search & Filter Projects</p>
-        <Input
-          type="text"
-          placeholder="Search projects by title or description..."
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-        />
+  <div className="flex items-center gap-2">
+    <SearchIcon className="w-4 h-4 text-blue-500" />
+    <span className="text-sm font-medium text-gray-700">Search Projects:</span>
+    <Input
+      type="text"
+      placeholder="Search projects by title or description..."
+      value={search}
+      onChange={e => setSearch(e.target.value)}
+      className="w-full max-w-md"
+    />
+  </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Dropdown
