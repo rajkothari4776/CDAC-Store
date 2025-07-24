@@ -7,6 +7,8 @@ import './App.css';
 import ManagedSkills from "./pages/programmer/skills";
 
 import './App.css'
+//import Registration from "./auth/Registration.tsx";
+import ProfilePage from "./pages/Dashboard.tsx";
 import Dashboard from "./pages/Dashboard";
 import {Route, Routes } from 'react-router-dom'
 import SignUp from "@/pages/SignUp.tsx";
@@ -21,6 +23,9 @@ function App() {
 
   return (
     <>
+   
+<!--       <ProfilePage/> -->
+
 
       {/*<Registration/>*/}
         <ManagedSkills/>
