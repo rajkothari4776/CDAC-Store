@@ -1,4 +1,4 @@
-import { BadgeCheck, PlusCircle, Trash2 } from 'lucide-react';
+import { PlusCircle, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 
 type Skill = {
@@ -56,7 +56,7 @@ const ManageSkills = () => {
                 {/* Header */}
                 <header>
                     <h1 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
-                        <BadgeCheck className="text-blue-500" /> Manage Skills
+                        Manage Skills
                     </h1>
                     <p className="text-gray-600 text-sm mt-1">Add and manage your technical skills</p>
                 </header>
@@ -164,7 +164,7 @@ const ManageSkills = () => {
                                 onClick={handleAddSkill}
                                 disabled={!selectedTechnology}
                                 className={`flex items-center gap-2 mt-3 px-4 py-2 text-white font-medium rounded-md transition ${selectedTechnology
-                                        ? 'bg-blue-600 hover:bg-blue-700'
+                                        ? 'bg-gray-800 hover:bg-gray-600'
                                         : 'bg-gray-400 cursor-not-allowed'
                                     }`}
                             >
