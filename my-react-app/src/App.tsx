@@ -6,10 +6,11 @@ import './App.css';
 //import Dashboard from "./pages/Dashboard";
 import ManagedSkills from "./pages/programmer/skills";
 
-import './App.css'
-import Dashboard from "./pages/Dashboard";
-import {Route, Routes } from 'react-router-dom'
 import SignUp from "@/pages/SignUp.tsx";
+import { Route, Routes } from 'react-router-dom';
+import './App.css';
+import Dashboard from "./pages/Dashboard";
+import BrowseProjects from "./pages/programmer/browseProjects";
 // import SignUp from "@/pages/SignUp.tsx";
 // import {LogIn} from "lucide-react";
 
@@ -23,7 +24,7 @@ function App() {
     <>
 
       {/*<Registration/>*/}
-        <ManagedSkills/>
+      <BrowseProjects/>
         <Routes>
             <Route
             path = '/'
@@ -37,6 +38,13 @@ function App() {
             {/*    path = '/login'*/}
             {/*    element = {<LogIn/>}*/}
             {/*/>*/}
+
+            <Route
+            path='/manageSkills' 
+            element={<ManagedSkills/>} 
+            />
+
+            
         </Routes>
     </>
   )
