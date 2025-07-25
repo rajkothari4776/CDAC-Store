@@ -1,6 +1,6 @@
 // pages/BrowseProjects.tsx
 import { Input } from "@/components/ui/input"
-import { projects } from "@/data/Projects"
+import { projects } from "@/data/projects"
 import { Listbox } from "@headlessui/react"
 import { ChevronDown, Coins, Eye, Hourglass, SearchIcon, Send } from "lucide-react"
 import { useState } from "react"
