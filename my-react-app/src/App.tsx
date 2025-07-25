@@ -9,8 +9,8 @@ import ManagedSkills from "./pages/programmer/skills";
 
 // import ManagedSkills from "./pages/programmer/skills";
 // import { Toaster } from "sonner";
-import ManagedSkills from "./pages/programmer/skills";
-import { Toaster } from "sonner"
+//import ManagedSkills from "./pages/programmer/skills";
+//import { Toaster } from "sonner"
 
 // import ManagedSkills from "./pages/programmer/skills.tsx";
 
@@ -18,9 +18,9 @@ import { Toaster } from "sonner"
 //import Registration from "./auth/Registration.tsx";
 
 import { Route, Routes } from 'react-router-dom';
-import Dashboard from "./pages/Dashboard";
+//import Dashboard from "./pages/Dashboard";
 
-import SignUp from "@/pages/SignUp.tsx";
+//import SignUp from "@/pages/SignUp.tsx";
 
 import BrowseProjects from "./pages/programmer/browseProjects";
 import BrowseProjectsTest from './pages/programmer/BrowseProjectsTest';
@@ -28,24 +28,28 @@ import ProjectDetails from './pages/programmer/ProjectDetails';
 import ViewMyProposals from './pages/programmer/ViewMyProposals';
 
 
-import Dashboard from "./pages/common/Dashboard.tsx";
+//import Dashboard from "./pages/common/Dashboard.tsx";
 // import {Route, Routes } from 'react-router-dom'
 
-import SignUp from "@/pages/programmer/SignUp.tsx";
+//import SignUp from "@/pages/programmer/SignUp.tsx";
 // import ProfilePage from "@/pages/programmer/ProgrammerProfile.tsx";
 
 
 // import SignUp from "@/pages/SignUp.tsx";
 // import ClientSignup form "@/pages/client/Signup";
 // import ProgrammerSignup from "@/pages/programmer/SignUp";
-import { Route, Routes } from 'react-router-dom';
+//import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
 // import BrowseProjects from "./pages/programmer/browseProjects";
     
 
 // import Dashboard from "./pages/Dashboard";
-import BrowseProjects from "./pages/programmer/browseProjects";
+//import BrowseProjects from "./pages/programmer/browseProjects";
+import ClientDashboard from './pages/client/MyProjects.tsx';
+import Dashboard from './pages/common/Dashboard.tsx';
+import SignUp from './pages/programmer/SignUp.tsx';
+import ProjectsPage from './pages/client/ProjectPageForClient.tsx';
 // import BrowseProjectsTest from './pages/programmer/BrowseProjectsTest';
 
 // import SignUp from "@/pages/SignUp.tsx";
@@ -61,6 +65,7 @@ function App() {
   return (
     <>
 
+     <ClientDashboard />
 
       {/*<ProfilePage/>*/}
 
@@ -78,15 +83,7 @@ function App() {
       {/*<BrowseProjects/>*/}
       
 
-        <Routes>
-            <Route
-            path = '/'
-            element = {<Dashboard/>}
-            />
-            <Route
-                path = '/signup'
-                element = {<SignUp/>}
-            />
+        
             {/*<Route*/}
             {/*    path = '/login'*/}
             {/*    element = {<LogIn/>}*/}
@@ -124,8 +121,8 @@ function App() {
       </Routes>
 
             
-        </Routes>
-        <Toaster richColors/>
+       
+      {/*<Toaster richColors/>*/}
 
     </>
   )
