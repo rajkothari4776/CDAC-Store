@@ -11,6 +11,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Dashboard from "./pages/Dashboard";
 import BrowseProjects from "./pages/programmer/BrowseProjects";
+import BrowseProjectsTest from './pages/programmer/BrowseProjectsTest';
 // import SignUp from "@/pages/SignUp.tsx";
 // import {LogIn} from "lucide-react";
 
@@ -24,7 +25,9 @@ function App() {
     <>
 
       {/*<Registration/>*/}
+      <BrowseProjectsTest/>
       <BrowseProjects/>
+      
         <Routes>
             <Route
             path = '/'
