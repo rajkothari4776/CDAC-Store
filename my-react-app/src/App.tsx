@@ -7,6 +7,9 @@ import './App.css';
 // import ManagedSkills from "./pages/programmer/skills";
 import { Toaster } from "sonner";
 import ManagedSkills from "./pages/programmer/skills";
+import { Toaster } from "sonner"
+
+import ManagedSkills from "./pages/programmer/Skills";
 
 import './App.css'
 //import Registration from "./auth/Registration.tsx";
@@ -23,8 +26,17 @@ import SignUp from "@/pages/programmer/SignUp.tsx";
 // import ProgrammerSignup from "@/pages/programmer/SignUp";
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+
 // import BrowseProjects from "./pages/programmer/browseProjects";
     
+
+import Dashboard from "./pages/Dashboard";
+import BrowseProjects from "./pages/programmer/BrowseProjects";
+import BrowseProjectsTest from './pages/programmer/BrowseProjectsTest';
+// import SignUp from "@/pages/SignUp.tsx";
+// import {LogIn} from "lucide-react";
+
+
 // import Registration from "./auth/Registration.tsx";
 // import {Dashboard} from "/pages/Dashboard.tsx";
 
@@ -36,10 +48,18 @@ function App() {
 
         {/*<ProfilePage/>*/}
       {/*<Registration/>*/}
+      <BrowseProjectsTest/>
+
 
       {/*  <ManagedSkills/>*/}
+
         <SignUp/>
       {/*<BrowseProjects/>*/}
+
+
+      <BrowseProjects/>
+      
+
         <Routes>
             <Route
             path = '/'
