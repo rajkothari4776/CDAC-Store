@@ -1,6 +1,6 @@
+import { type Project } from "@/data/projects"; // adjust path based on your project
 import { Eye, Send } from "lucide-react";
 import React from "react";
-import { type Project } from "../data/Projects"; // adjust path based on your project
 
 interface Props {
     project: Project;

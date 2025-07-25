@@ -1,5 +1,5 @@
 import ProjectCard from '@/components/ProjectCard';
-import { projects } from '@/data/Projects';
+import { projects } from '@/data/projects';
 
 const BrowseProjectsTest = () => {
     return (
