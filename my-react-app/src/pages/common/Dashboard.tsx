@@ -1,6 +1,6 @@
 
 // import React from "react"
-import {Navbar} from "../components/common/Navbar";
+import {Navbar} from "../../components/common/Navbar.tsx";
 import {Footer} from "@/components/common/Footer.tsx";
 import {Badge} from "@/components/ui/badge.tsx";
 import {Button} from "@/components/ui/button.tsx";
