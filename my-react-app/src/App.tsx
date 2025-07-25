@@ -5,11 +5,11 @@
 import './App.css';
 //import Dashboard from "./pages/Dashboard";
 // import ManagedSkills from "./pages/programmer/skills";
-import { Toaster } from "sonner";
+// import { Toaster } from "sonner";
 import ManagedSkills from "./pages/programmer/skills";
 import { Toaster } from "sonner"
 
-import ManagedSkills from "./pages/programmer/Skills";
+// import ManagedSkills from "./pages/programmer/skills.tsx";
 
 import './App.css'
 //import Registration from "./auth/Registration.tsx";
@@ -30,9 +30,9 @@ import './App.css';
 // import BrowseProjects from "./pages/programmer/browseProjects";
     
 
-import Dashboard from "./pages/Dashboard";
-import BrowseProjects from "./pages/programmer/BrowseProjects";
-import BrowseProjectsTest from './pages/programmer/BrowseProjectsTest';
+// import Dashboard from "./pages/Dashboard";
+import BrowseProjects from "./pages/programmer/browseProjects";
+// import BrowseProjectsTest from './pages/programmer/BrowseProjectsTest';
 // import SignUp from "@/pages/SignUp.tsx";
 // import {LogIn} from "lucide-react";
 
@@ -48,16 +48,16 @@ function App() {
 
         {/*<ProfilePage/>*/}
       {/*<Registration/>*/}
-      <BrowseProjectsTest/>
+      {/*<BrowseProjectsTest/>*/}
 
 
       {/*  <ManagedSkills/>*/}
 
-        <SignUp/>
+        {/*<SignUp/>*/}
       {/*<BrowseProjects/>*/}
 
 
-      <BrowseProjects/>
+      {/*<BrowseProjects/>*/}
       
 
         <Routes>
