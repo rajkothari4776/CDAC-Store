@@ -24,6 +24,7 @@ import SignUp from "@/pages/SignUp.tsx";
 
 import BrowseProjects from "./pages/programmer/browseProjects";
 import BrowseProjectsTest from './pages/programmer/BrowseProjectsTest';
+import ProjectDetails from './pages/programmer/ProjectDetails';
 import ViewMyProposals from './pages/programmer/ViewMyProposals';
 
 
@@ -95,6 +96,7 @@ function App() {
 
 
       {/*<Registration/>*/}
+      <ProjectDetails/>
       <ViewMyProposals/>
       <BrowseProjectsTest />
       <BrowseProjects />
