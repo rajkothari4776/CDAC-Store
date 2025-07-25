@@ -5,24 +5,21 @@
 import './App.css';
 //import Dashboard from "./pages/Dashboard";
 
-import ManagedSkills from "./pages/programmer/skills";
 
 // import ManagedSkills from "./pages/programmer/skills";
 // import { Toaster } from "sonner";
+import { Toaster } from "sonner";
 import ManagedSkills from "./pages/programmer/skills";
-import { Toaster } from "sonner"
 
 // import ManagedSkills from "./pages/programmer/skills.tsx";
 
 
 //import Registration from "./auth/Registration.tsx";
 
-import { Route, Routes } from 'react-router-dom';
-import Dashboard from "./pages/Dashboard";
 
-import SignUp from "@/pages/SignUp.tsx";
-
-import BrowseProjects from "./pages/programmer/browseProjects";
+//import SignUp from "@/pages/SignUp.tsx";
+//
+//import BrowseProjects from "./pages/programmer/browseProjects";
 import BrowseProjectsTest from './pages/programmer/BrowseProjectsTest';
 import ProjectDetails from './pages/programmer/ProjectDetails';
 import ViewMyProposals from './pages/programmer/ViewMyProposals';
@@ -46,6 +43,7 @@ import './App.css';
 
 // import Dashboard from "./pages/Dashboard";
 import BrowseProjects from "./pages/programmer/browseProjects";
+import SubmitProposal from './pages/programmer/SubmitProposal.tsx';
 // import BrowseProjectsTest from './pages/programmer/BrowseProjectsTest';
 
 // import SignUp from "@/pages/SignUp.tsx";
@@ -76,17 +74,13 @@ function App() {
 
 
       {/*<BrowseProjects/>*/}
-      
+      <SubmitProposal/>
+      <ProjectDetails/>
+      <ViewMyProposals/>
+      <BrowseProjectsTest />
+      <BrowseProjects />
 
-        <Routes>
-            <Route
-            path = '/'
-            element = {<Dashboard/>}
-            />
-            <Route
-                path = '/signup'
-                element = {<SignUp/>}
-            />
+        
             {/*<Route*/}
             {/*    path = '/login'*/}
             {/*    element = {<LogIn/>}*/}
@@ -96,10 +90,10 @@ function App() {
 
 
       {/*<Registration/>*/}
-      <ProjectDetails/>
+      {/* <ProjectDetails/>
       <ViewMyProposals/>
       <BrowseProjectsTest />
-      <BrowseProjects />
+      <BrowseProjects /> */}
 
       <Routes>
         <Route
@@ -123,8 +117,6 @@ function App() {
 
       </Routes>
 
-            
-        </Routes>
         <Toaster richColors/>
 
     </>
