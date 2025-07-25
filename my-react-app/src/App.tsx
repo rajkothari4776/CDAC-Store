@@ -4,13 +4,20 @@
 
 import './App.css';
 //import Dashboard from "./pages/Dashboard";
+// import ManagedSkills from "./pages/programmer/skills";
+import { Toaster } from "sonner"
+
 import ManagedSkills from "./pages/programmer/Skills";
 
 import './App.css'
 //import Registration from "./auth/Registration.tsx";
-import ProfilePage from "./pages/Dashboard.tsx";
+
 import Dashboard from "./pages/Dashboard";
 import {Route, Routes } from 'react-router-dom'
+
+import SignUp from "@/pages/client/SignUp.tsx";
+// import ProfilePage from "@/pages/programmer/ProgrammerProfile.tsx";
+
 
 import SignUp from "@/pages/SignUp.tsx";
 import { Route, Routes } from 'react-router-dom';
@@ -29,12 +36,14 @@ function App() {
 
   return (
     <>
-   
-<!--       <ProfilePage/> -->
 
-
+        {/*<ProfilePage/>*/}
       {/*<Registration/>*/}
       <BrowseProjectsTest/>
+
+
+      {/*  <ManagedSkills/>*/}
+
       <BrowseProjects/>
       
         <Routes>
@@ -58,6 +67,7 @@ function App() {
 
             
         </Routes>
+        <Toaster richColors/>
     </>
   )
 }
