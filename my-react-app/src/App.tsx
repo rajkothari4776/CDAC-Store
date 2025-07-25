@@ -4,9 +4,6 @@
 
 import './App.css';
 //import Dashboard from "./pages/Dashboard";
-
-import ManagedSkills from "./pages/programmer/skills";
-
 // import ManagedSkills from "./pages/programmer/skills";
 // import { Toaster } from "sonner";
 import ManagedSkills from "./pages/programmer/skills";
@@ -14,19 +11,8 @@ import { Toaster } from "sonner"
 
 // import ManagedSkills from "./pages/programmer/skills.tsx";
 
-
+import './App.css'
 //import Registration from "./auth/Registration.tsx";
-
-import { Route, Routes } from 'react-router-dom';
-import Dashboard from "./pages/Dashboard";
-
-import SignUp from "@/pages/SignUp.tsx";
-
-import BrowseProjects from "./pages/programmer/browseProjects";
-import BrowseProjectsTest from './pages/programmer/BrowseProjectsTest';
-import ProjectDetails from './pages/programmer/ProjectDetails';
-import ViewMyProposals from './pages/programmer/ViewMyProposals';
-
 
 import Dashboard from "./pages/common/Dashboard.tsx";
 // import {Route, Routes } from 'react-router-dom'
@@ -47,7 +33,6 @@ import './App.css';
 // import Dashboard from "./pages/Dashboard";
 import BrowseProjects from "./pages/programmer/browseProjects";
 // import BrowseProjectsTest from './pages/programmer/BrowseProjectsTest';
-
 // import SignUp from "@/pages/SignUp.tsx";
 // import {LogIn} from "lucide-react";
 
@@ -60,9 +45,6 @@ function App() {
 
   return (
     <>
-
-
-      {/*<ProfilePage/>*/}
 
         {/*<ProfilePage/>*/}
       {/*<Registration/>*/}
@@ -92,41 +74,14 @@ function App() {
             {/*    element = {<LogIn/>}*/}
             {/*/>*/}
 
-
-
-
-      {/*<Registration/>*/}
-      <ProjectDetails/>
-      <ViewMyProposals/>
-      <BrowseProjectsTest />
-      <BrowseProjects />
-
-      <Routes>
-        <Route
-          path='/'
-          element={<Dashboard />}
-        />
-        <Route
-          path='/signup'
-          element={<SignUp />}
-        />
-        {/*<Route*/}
-        {/*    path = '/login'*/}
-        {/*    element = {<LogIn/>}*/}
-        {/*/>*/}
-
-        <Route
-          path='/manageSkills'
-          element={<ManagedSkills />}
-        />
-
-
-      </Routes>
+            <Route
+            path='/manageSkills' 
+            element={<ManagedSkills/>} 
+            />
 
             
         </Routes>
         <Toaster richColors/>
-
     </>
   )
 }

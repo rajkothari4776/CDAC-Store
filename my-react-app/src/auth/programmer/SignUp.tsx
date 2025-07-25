@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input.tsx";
 import {Code2} from "lucide-react";
 import {Label} from "@radix-ui/react-label";
 // import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox"
+import { Checkbox } from "@/components/ui/checkbox.tsx"
 import {Textarea} from "@/components/ui/textarea.tsx";
 // import { Label } from "@/components/ui/label";
 // import {Toaster} from "sonner";
