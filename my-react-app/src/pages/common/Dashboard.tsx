@@ -27,13 +27,13 @@ function Dashboard() {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button size="lg" className="text-lg px-8" asChild>
-                            <Link to="/signup?type=client">
+                            <Link to="/client-signup">
                                 <Briefcase className="mr-2 h-5 w-5" />
                                 Hire Programmers
                             </Link>
                         </Button>
                         <Button size="lg" variant="outline" className="text-lg px-8 bg-transparent" asChild>
-                            <Link to="/signup?type=programmer">
+                            <Link to="/programmer-signup">
                                 <Code className="mr-2 h-5 w-5" />
                                 Find Projects
                             </Link>

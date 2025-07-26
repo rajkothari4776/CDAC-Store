@@ -27,10 +27,10 @@ export function Navbar() {
 
                     <div className="flex items-center space-x-4">
                         <Button variant="ghost" asChild>
-                            <Link to="/login">Sign In</Link>
+                            <Link to="/signin">Sign In</Link>
                         </Button>
                         <Button asChild>
-                            <Link to="/signup">Sign Up</Link>
+                            <Link to="/client-signup">Sign Up</Link>
                         </Button>
                     </div>
                 </div>
