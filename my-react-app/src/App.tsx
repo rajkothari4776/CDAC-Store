@@ -30,6 +30,10 @@ import CLientSignUp from "@/auth/client/SignUp.tsx";
 import ProgrammerSignup from "@/auth/programmer/SignUp.tsx";
 import ClientDashboard from "@/pages/client/ClientDashboard.tsx";
 import Login from "@/auth/Login.tsx";
+import BrowseProjectsTest from './pages/programmer/BrowseProjectsTest.tsx';
+import ProfilePage from './pages/programmer/ProgrammerProfile.tsx';
+import ProjectDetails from './pages/programmer/ProjectDetails.tsx';
+import ViewMyProposals from './pages/programmer/ViewMyProposals.tsx';
 
 // import BrowseProjects from "./pages/programmer/browseProjects";
     
@@ -82,6 +86,28 @@ function App() {
                 path = '/signin'
                 element = {<Login/>}
             />
+            <Route
+                path = '/browse-projects'
+                element = {<BrowseProjectsTest/>}
+            />
+            <Route
+                path = '/programmer-profile'
+                element = {<ProfilePage/>}
+            />            
+            <Route
+                path = '/project-details'
+                element = {<ProjectDetails/>}
+            />  
+            <Route
+                path = '/skills'
+                element = {<ManagedSkills/>}
+            />
+            <Route
+                path = '/view-proposals'
+                element = {<ViewMyProposals/>}
+            />
+              
+
             {/*<Route*/}
             {/*    path = '/signup'*/}
             {/*    element = {<SignUp/>}*/}
