@@ -2,6 +2,9 @@ import React from "react";
 import { type Project } from "@/data/projects"; // adjust path if needed
 import { Eye, Send } from "lucide-react";
 
+// import { type Project } from "../data/projects";
+
+
 interface Props {
     project: Omit<Project, "status"> & Partial<{ status: string }>; // status is optional
 }
