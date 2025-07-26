@@ -12,6 +12,7 @@ export type Project = {
     proposals: number
     postedDate: string
     deadline: string
+    Status: string // Added Status field to track project status
 }
 
 
@@ -29,6 +30,7 @@ export const projects: Project[] = [
         proposals: 12,
         postedDate: "1/20/2024",
         deadline: "3/15/2024",
+        Status:"Open", // Example status
         
     },
     {
@@ -44,5 +46,6 @@ export const projects: Project[] = [
         proposals: 8,
         postedDate: "2/10/2024",
         deadline: "3/10/2024",
+        Status: "In Progress", // Example status
     },
 ]
