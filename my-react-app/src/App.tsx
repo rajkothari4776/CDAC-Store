@@ -17,7 +17,7 @@ import './App.css'
 import Dashboard from "./pages/common/Dashboard.tsx";
 // import {Route, Routes } from 'react-router-dom'
 
-import SignUp from "@/pages/programmer/SignUp.tsx";
+// import SignUp from "@/pages/programmer/SignUp.tsx";
 // import ProfilePage from "@/pages/programmer/ProgrammerProfile.tsx";
 
 
@@ -26,12 +26,16 @@ import SignUp from "@/pages/programmer/SignUp.tsx";
 // import ProgrammerSignup from "@/pages/programmer/SignUp";
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import CLientSignUp from "@/auth/client/SignUp.tsx";
+import ProgrammerSignup from "@/auth/programmer/SignUp.tsx";
+import ClientDashboard from "@/pages/client/ClientDashboard.tsx";
+import Login from "@/auth/Login.tsx";
 
 // import BrowseProjects from "./pages/programmer/browseProjects";
     
 
 // import Dashboard from "./pages/Dashboard";
-import BrowseProjects from "./pages/programmer/browseProjects";
+// import BrowseProjects from "./pages/programmer/browseProjects";
 // import BrowseProjectsTest from './pages/programmer/BrowseProjectsTest';
 // import SignUp from "@/pages/SignUp.tsx";
 // import {LogIn} from "lucide-react";
@@ -45,7 +49,8 @@ function App() {
 
   return (
     <>
-
+        {/*<Dashboard/>*/}
+        {/*<ClientDashboard/>*/}
         {/*<ProfilePage/>*/}
       {/*<Registration/>*/}
       {/*<BrowseProjectsTest/>*/}
@@ -66,20 +71,29 @@ function App() {
             element = {<Dashboard/>}
             />
             <Route
-                path = '/signup'
-                element = {<SignUp/>}
+                path = '/client-signup'
+                element = {<CLientSignUp/>}
+            />
+            <Route
+                path = '/programmer-signup'
+                element = {<ProgrammerSignup/>}
+            />
+            <Route
+                path = '/signin'
+                element = {<Login/>}
             />
             {/*<Route*/}
-            {/*    path = '/login'*/}
-            {/*    element = {<LogIn/>}*/}
-            {/*/>*/}
+            {/*    path = '/signup'*/}
+            {/*    element = {<SignUp/>}*/}
+            {/*/>  */}
 
-            <Route
-            path='/manageSkills' 
-            element={<ManagedSkills/>} 
-            />
 
-            
+        {/*    <Route*/}
+        {/*    path='/manageSkills' */}
+        {/*    element={<ManagedSkills/>} */}
+        {/*    />*/}
+
+        {/*    */}
         </Routes>
         <Toaster richColors/>
     </>
