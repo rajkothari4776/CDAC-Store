@@ -1,12 +1,16 @@
 
 
-import { type Project } from "@/data/projects"; // adjust path if needed
-import ProjectCard from "@/components/ProjectCard";
+// import { type Project } from "@/data/projects"; // adjust path if needed
+// import ProjectCard from "@/components/ProjectCard";
 import React, { useState } from "react";
 import ProjectsPage from "./ProjectPageForClient";
 //import ProjectCard from './../../components/ProjectCard';
 
-const ClientDashboard: React.FC = () => {
+// const myProjects: React.FunctionComponent= () => {
+  
+// };
+
+function MyProjects(){
   const [statusFilter, setStatusFilter] = useState("all");
 
   const stats = {
@@ -79,6 +83,6 @@ const ClientDashboard: React.FC = () => {
 
     </div>
   );
-};
+}
 
-export default ClientDashboard;
+export default MyProjects;

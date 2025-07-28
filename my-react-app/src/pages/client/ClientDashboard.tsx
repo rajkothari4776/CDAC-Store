@@ -5,6 +5,7 @@ import { Plus, Briefcase, FileText, Users, TrendingUp, Clock, DollarSign, Eye } 
 import { Link } from "react-router-dom"
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card.tsx";
 import {Button} from "@/components/ui/button.tsx";
+import { Badge } from "@/components/ui/badge";
 
 
 function ClientDashboard() {
@@ -78,7 +79,7 @@ function ClientDashboard() {
                     <p className="text-gray-600 mt-1">Manage your projects and find the best talent for your needs.</p>
                 </div>
                 <Button asChild>
-                    <Link to="/client/projects/new">
+                    <Link to="/post-projects">
                         <Plus className="" />
                         Post New Project
                     </Link>
@@ -97,7 +98,7 @@ function ClientDashboard() {
                             className="h-auto p-4 flex flex-col items-center space-y-2 bg-transparent"
 
                         >
-                            <Link to="/client/projects/new">
+                            <Link to="/post-projects">
                                 <Plus className="h-6 w-6" />
                                 <span>Post Project</span>
                             </Link>
@@ -107,7 +108,7 @@ function ClientDashboard() {
                             className="h-auto p-4 flex flex-col items-center space-y-2 bg-transparent"
 
                         >
-                            <Link to="/client/projects">
+                            <Link to="/client-project">
                                 <Briefcase className="h-6 w-6" />
                                 <span>View Projects</span>
                             </Link>
@@ -116,6 +117,29 @@ function ClientDashboard() {
                     </div>
                 </CardContent>
             </Card>
+            <Card>
+            <CardHeader>
+              <CardTitle>Recent Proposals</CardTitle>
+              <CardDescription>Latest proposals received on your projects</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              {recentProposals.map((proposal) => (
+                <div key={proposal.id} className="border rounded-lg p-4">
+                  <div className="flex items-start justify-between mb-2">
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-sm">{proposal.projectTitle}</h4>
+                      <p className="text-sm text-gray-600">by {proposal.programmerName}</p>
+                    </div>
+                    <Badge variant="outline">{proposal.amount}</Badge>
+                  </div>
+                  <div className="flex items-center justify-between text-sm text-gray-600">
+                    <span>{proposal.duration}</span>
+                    <span>{proposal.submittedAt}</span>
+                  </div>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import ProposalCard from "../../components/ProposalCard";
-import ProposalFilter from "../../components/ProposalFilter";
-import ProposalStats from "../../components/ProposalStats";
+import ProposalCard from "@/components/ProposalCard";
+import ProposalFilter from "@/components/ProposalFilter";
+import ProposalStats from "@/components/ProposalStats";
 
 type Proposal = {
     title: string;

@@ -20,10 +20,10 @@ import { Route, Routes } from 'react-router-dom';
 
 //import SignUp from "@/pages/SignUp.tsx";
 
-import BrowseProjects from "./pages/programmer/browseProjects";
-import BrowseProjectsTest from './pages/programmer/BrowseProjectsTest';
-import ProjectDetails from './pages/programmer/ProjectDetails';
-import ViewMyProposals from './pages/programmer/ViewMyProposals';
+// import BrowseProjects from "./pages/programmer/browseProjects";
+// import BrowseProjectsTest from './pages/programmer/BrowseProjectsTest';
+// import ProjectDetails from './pages/programmer/ProjectDetails';
+// import ViewMyProposals from './pages/programmer/ViewMyProposals';
 
 
 //import Dashboard from "./pages/common/Dashboard.tsx";
@@ -45,7 +45,7 @@ import Dashboard from "./pages/common/Dashboard.tsx";
 import './App.css';
 import CLientSignUp from "@/auth/client/SignUp.tsx";
 import ProgrammerSignup from "@/auth/programmer/SignUp.tsx";
-import ClientDashboard from "@/pages/client/ClientDashboard.tsx";
+// import ClientDashboard from "@/pages/client/ClientDashboard.tsx";
 import Login from "@/auth/Login.tsx";
 import BrowseProjectsTest from './pages/programmer/BrowseProjectsTest.tsx';
 import ProfilePage from './pages/programmer/ProgrammerProfile.tsx';
@@ -58,10 +58,18 @@ import ViewMyProposals from './pages/programmer/ViewMyProposals.tsx';
 // import Dashboard from "./pages/Dashboard";
 
 //import BrowseProjects from "./pages/programmer/browseProjects";
-import ClientDashboard from './pages/client/MyProjects.tsx';
-import Dashboard from './pages/common/Dashboard.tsx';
-import SignUp from './pages/programmer/SignUp.tsx';
+// import ClientDashboard from './pages/client/MyProjects.tsx';
+// import Dashboard from './pages/common/Dashboard.tsx';
+// import SignUp from './pages/programmer/SignUp.tsx';
+// import ProjectsPage from './pages/client/ProjectPageForClient.tsx';
+import ManageSkills from './pages/programmer/skills.tsx';
+import ClientProfile from './pages/client/clientProfile.tsx';
+import ClientDashboard from './pages/client/ClientDashboard.tsx';
+import PostProjectForm from './pages/client/PostProject.tsx';
 import ProjectsPage from './pages/client/ProjectPageForClient.tsx';
+import ProgrammerDashboard from './pages/programmer/Dashboard.tsx';
+import MyProjects from './pages/client/MyProjects.tsx';
+// import {myProjects} from './pages/client/MyProjects.tsx'
 // import BrowseProjects from "./pages/programmer/browseProjects";
 
 // import BrowseProjectsTest from './pages/programmer/BrowseProjectsTest';
@@ -78,29 +86,7 @@ function App() {
   return (
     <>
 
-      {/*<ProfilePage/>*/}
-
-        {/*<Dashboard/>*/}
-        {/*<ClientDashboard/>*/}
-        {/*<ProfilePage/>*/}
-      {/*<Registration/>*/}
-      {/*<BrowseProjectsTest/>*/}
-
-
-      {/*  <ManagedSkills/>*/}
-
-        {/*<SignUp/>*/}
-      {/*<BrowseProjects/>*/}
-
-
-      {/*<BrowseProjects/>*/}
       
-
-        
-            {/*<Route*/}
-            {/*    path = '/login'*/}
-            {/*    element = {<LogIn/>}*/}
-            {/*/>*/}
         <Routes>
             <Route
             path = '/'
@@ -132,29 +118,56 @@ function App() {
             />  
             <Route
                 path = '/skills'
-                element = {<ManagedSkills/>}
+                element = {<ManageSkills/>}
             />
             <Route
                 path = '/view-proposals'
                 element = {<ViewMyProposals/>}
             />
+            <Route
+                path = '/client-profile'
+                element = {<ClientProfile/>}
+            />
+
+             <Route
+                path = '/client-dashboard'
+                element = {<ClientDashboard/>}
+            />
+
+            <Route
+                path = '/client-project'
+                element = {<MyProjects/>}
+            />
+
+            
+
+            {/* <Route
+                path = '/post-projects'
+                element = {<PostProjectForm/>}
+            /> */}
+
+            <Route
+                path = '/post-projects'
+                element = {<PostProjectForm/>}
+            />
+
+            <Route
+                path = '/projectPage'
+                element = {<ProjectsPage/>}
+            />
+
+            <Route
+                path = '/programmerDashboard'
+                element = {<ProgrammerDashboard/>}
+            />
+            
+            
+
+
               
 
-            {/*<Route*/}
-            {/*    path = '/signup'*/}
-            {/*    element = {<SignUp/>}*/}
-            {/*/>  */}
-
-
-        {/*    <Route*/}
-        {/*    path='/manageSkills' */}
-        {/*    element={<ManagedSkills/>} */}
-        {/*    />*/}
-
-
-        {/*    */}
         </Routes>
-        <Toaster richColors/>
+        {/* <Toaster richColors/> */}
     </>
   )
 }

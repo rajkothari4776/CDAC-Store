@@ -3,8 +3,8 @@ import React, { useState } from "react";
 const PostProjectForm: React.FC = () => {
   const [projectTitle, setProjectTitle] = useState("");
   const [projectDescription, setProjectDescription] = useState("");
-  const [category, setCategory] = useState("");
-  const [type, setType] = useState("");
+  // const [category, setCategory] = useState("");
+  const [type, setType] = useState("fixed");
   const [minBudget, setMinBudget] = useState("");
   const [maxBudget, setMaxBudget] = useState("");
   const [estimatedDuration, setEstimatedDuration] = useState("");
@@ -13,7 +13,7 @@ const PostProjectForm: React.FC = () => {
   return (
     <div className="min-h-screen bg-white p-6 space-y-6">
       {/* Dashboard Header */}
-      <h1 className="text-3xl font-bold text-gray-800">Client Dashboard</h1>
+      {/* <h1 className="text-3xl font-bold text-gray-800">Client Dashboard</h1> */}
 
       {/* Page Title */}
       <div>
@@ -61,38 +61,34 @@ const PostProjectForm: React.FC = () => {
         </div>
 
         {/* Category & Type */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> */}
+          {/* <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1">
               Project Category
-            </label>
-            <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              className="w-full border rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="">Select project category</option>
+            </label> */}
+            
+              {/* <option value="">Select project category</option>
               <option value="web-app">Web Application</option>
               <option value="mobile-app">Mobile App</option>
-              <option value="desktop-app">Desktop App</option>
-            </select>
-          </div>
+              <option value="desktop-app">Desktop App</option> */}
+            {/* </select> */}
+          {/* </div> */}
 
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">
+          {/* <div> */}
+            {/* <label className="block text-sm font-semibold text-gray-700 mb-1">
               Project Type
-            </label>
-            <select
+            </label> */}
+            {/* <select
               value={type}
               onChange={(e) => setType(e.target.value)}
               className="w-full border rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="">Select project type</option>
+            > */}
+              {/* <option value="">Select project type</option>
               <option value="hourly">Hourly Rate</option>
-              <option value="fixed">Fixed Rate</option>
-            </select>
-          </div>
-        </div>
+              <option value="fixed">Fixed Rate</option> */}
+            {/* </select> */}
+          {/* </div> */}
+        {/* </div> */}
       </div>
 
       {/* Budget & Timeline Section */}
