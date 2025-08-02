@@ -1,8 +1,9 @@
-package com.sunbeam.entities;
+package com.sunbeam.entity;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sunbeam.entity.BaseEntity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,7 +22,7 @@ import lombok.ToString;
 @ToString(callSuper = true, exclude = {"projectTechnologies", "proposals"})
 @EqualsAndHashCode(of="name",callSuper = false)
 @Table(name = "projects")
-public class Project extends BaseEntity{
+public class Project extends BaseEntity {
 	
 	
 	private String title;

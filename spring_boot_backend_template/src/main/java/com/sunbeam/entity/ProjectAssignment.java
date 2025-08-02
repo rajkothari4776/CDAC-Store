@@ -1,4 +1,4 @@
-package com.sunbeam.entities;
+package com.sunbeam.entity;
 
 import java.time.LocalDateTime;
 
