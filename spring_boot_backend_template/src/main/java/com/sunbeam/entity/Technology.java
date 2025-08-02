@@ -1,4 +1,4 @@
-package com.sunbeam.entities;
+package com.sunbeam.entity;
 
 import java.util.ArrayList;
 import java.util.List;

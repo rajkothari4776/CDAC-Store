@@ -1,4 +1,4 @@
-package com.sunbeam.entities;
+package com.sunbeam.entity;
 
 import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
