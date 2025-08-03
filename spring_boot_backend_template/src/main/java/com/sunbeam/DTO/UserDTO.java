@@ -1,6 +1,6 @@
 package com.sunbeam.DTO;
 
-
+import com.sunbeam.entity.UserRole;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -9,17 +9,8 @@ import lombok.ToString;
 @Setter
 @ToString
 public class UserDTO {
+    private Long id;
     private String firstName;
     private String lastName;
-    private String email;
-    private String phoneNumber;
-    private boolean active;
-    private String userRole;
-    private boolean cdacStudent;
-    private int experience;
-    private boolean available;
-    private String bio;
-    private String github;
-//    private String email;
-    private String password;
+    private UserRole userRole;
 }

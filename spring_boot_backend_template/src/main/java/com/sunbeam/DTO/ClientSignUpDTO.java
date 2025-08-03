@@ -1,6 +1,7 @@
 package com.sunbeam.DTO;
 
 import com.sunbeam.entity.UserRole;
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -11,7 +12,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ClientSignUpDTO extends BaseDTO {
+public class ClientSignUpDTO{
     @NotBlank(message = "first name must be supplied")
     private String firstName;
     @NotBlank(message = "last name must be supplied")
@@ -24,21 +25,21 @@ public class ClientSignUpDTO extends BaseDTO {
     private String password;
     @NotBlank(message = "confirm password must be supplied")
     private String confirmPassword;
-    @NotBlank(message = "confirm password must be supplied")
+    @NotBlank(message = "phone number must be supplied")
     private String phoneNumber;
 
     //	@NotNull(message = "toogle active or not active")
     private boolean active = true;
     @NotNull(message = "user role must be supplied")
-    private UserRole userRole;
-    @NotNull(message = "toggle it")
+    private UserRole userRole = UserRole.CLIENT;
 
-    private boolean cdacStudent;
-    @NotNull(message  = "experience should be supplied")
-    private int experience;
-    private boolean available;
-    @NotBlank(message = "bio must be added")
-    private String bio;
-    @NotBlank(message = "github URL is compulsary")
-    private String github;
+    @NotBlank(message = "company name must be supplied")
+    private String companyName;
+    @NotNull(message = "company size must be supplied")
+    private int companySize;
+    @NotBlank(message = "description must be supplied")
+    private String description;
+    @NotBlank(message = "city must be supplied")
+    private String city;
+
 }

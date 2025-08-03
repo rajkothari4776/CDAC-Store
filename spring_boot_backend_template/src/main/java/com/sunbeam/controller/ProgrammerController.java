@@ -1,6 +1,7 @@
 package com.sunbeam.controller;
 
 import com.sunbeam.DTO.ProgrammerSignUpDTO;
+import com.sunbeam.DTO.ProgrammerSkillsDTO;
 import com.sunbeam.service.ProgrammerService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.persistence.Entity;
@@ -25,6 +26,13 @@ public class ProgrammerController {
     @Operation(description = "User signup")
     public ResponseEntity<?> userSignup(@RequestBody @Valid ProgrammerSignUpDTO userSignUpDTO){
         return ResponseEntity.status(HttpStatus.CREATED).body(programmerService.signUp(userSignUpDTO));
+    }
+
+
+    @PostMapping("/add-skills")
+    @Operation(description = "Programmer adding skills")
+    public ResponseEntity<?> addSkills(@RequestBody @Valid ProgrammerSkillsDTO dto){
+        return ResponseEntity.status(HttpStatus.CREATED).body(programmerService.addSkills(dto));
     }
 
 }
