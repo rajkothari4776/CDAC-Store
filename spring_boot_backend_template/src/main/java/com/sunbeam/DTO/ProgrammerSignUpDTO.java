@@ -30,7 +30,7 @@ public class ProgrammerSignUpDTO{
     //	@NotNull(message = "toogle active or not active")
     private boolean active = true;
     @NotNull(message = "user role must be supplied")
-    private UserRole userRole;
+    private UserRole userRole = UserRole.PROGRAMMER;
     @NotNull(message = "toggle it")
 
     private boolean cdacStudent;

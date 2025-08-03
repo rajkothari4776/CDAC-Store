@@ -1,26 +1,19 @@
 package com.sunbeam.entity;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
 @ToString(callSuper = true)
 @NoArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "Technologies")
 
 public class Technology {
@@ -28,30 +21,40 @@ public class Technology {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(length = 100, unique = true, name = "technology_id")
+	@EqualsAndHashCode.Include
 	private Long technologyId;
 
-	@Column(name = "technology_name")
+	@Column(name = "technology_name", unique = true, nullable = false)
 	private String technologyName;
 
 	@Column(name = "is_active")
 	private boolean isActive;
 
-	@OneToMany(mappedBy = "technology", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<ProjectTechnology> projectTechnologies = new ArrayList<>();
+//	@OneToMany(mappedBy = "technology", cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<ProjectTechnology> projectTechnologies = new ArrayList<>();
+//
+//	@OneToMany(mappedBy = "technology", cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<ProgrammerTechnology> programmerTechnologies = new ArrayList<>();
+//
+//	public void addProjectTechnology(ProjectTechnology pt) {
+//		projectTechnologies.add(pt);
+//		pt.setTechnology(this);
+//
+//	}
+//
+//	public void removeProjectTechnology(ProjectTechnology pt) {
+//		projectTechnologies.remove(pt);
+//		pt.setTechnology(null);
+//
+//	}
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+	@JoinTable(name = "programmer_technology",
+			joinColumns = @JoinColumn(name = "technology_id"),
+			inverseJoinColumns = @JoinColumn(name = "programmer_id"))
+	private Set<ProgrammerProfile> programmers = new HashSet<>();
 
-	@OneToMany(mappedBy = "technology", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<ProgrammerTechnology> programmerTechnologies = new ArrayList<>();
 
-	public void addProjectTechnology(ProjectTechnology pt) {
-		projectTechnologies.add(pt);
-		pt.setTechnology(this);
-
-	}
-
-	public void removeProjectTechnology(ProjectTechnology pt) {
-		projectTechnologies.remove(pt);
-		pt.setTechnology(null);
-
-	}
+	@ManyToMany(mappedBy = "technologies", fetch = FetchType.LAZY)
+	private Set<Project> projects = new HashSet<>();
 
 }

@@ -6,6 +6,7 @@ import com.sunbeam.DTO.UserSignInDTO;
 import com.sunbeam.customExceptions.AuthenticationFailureException;
 import com.sunbeam.dao.UserDao;
 import com.sunbeam.entity.UserEntity;
+import com.sunbeam.entity.UserRole;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -21,12 +22,7 @@ public class UserServiceImpl implements UserService{
     public UserDTO signIn(UserSignInDTO dto){
         UserEntity userEntity = userDao.findByEmailAndPassword(dto.getEmail(), dto.getPassword())
                 .orElseThrow(() -> new AuthenticationFailureException("Invalid username or password"));
-        UserDTO user =  modelMapper.map(userEntity, UserDTO.class);
-        user.setBio(userEntity.getProgrammerProfile().getBio());
-        user.setGithub(userEntity.getProgrammerProfile().getGithub());
-        user.setCdacStudent(userEntity.getProgrammerProfile().isCdacStudent());
-        user.setAvailable(userEntity.getProgrammerProfile().isAvailable());
-        user.setExperience(userEntity.getProgrammerProfile().getExperience());
+        UserDTO user = modelMapper.map(userEntity, UserDTO.class);
 
 //        u = modelMapper.map(userEntity.getProgrammerProfile(), UserDTO.class);
         return user;
