@@ -36,7 +36,7 @@ public class Project extends BaseEntity {
 	@Column(name="max_budget")
 	private double maxBudget;
 	
-	private String status;
+	private Status status;
 	@Column(name="estimated_duration_days")
 	private double estimatedDurationDays;
 	@Column(name="is_assigned")
@@ -90,7 +90,7 @@ public class Project extends BaseEntity {
 //	}
 
 	public Project(String title, String description, String projectType, Float minBudget, Float maxBudget,
-			String status, int estimatedDurationDays, boolean isAssigned) {
+			Status status, int estimatedDurationDays, boolean isAssigned) {
 		super();
 		this.title = title;
 		this.description = description;
