@@ -22,7 +22,7 @@ public class ProgrammerProfile{
     @EqualsAndHashCode.Include
     private Long id;
     @MapsId
-    @OneToOne
+    @OneToOne()
     @JoinColumn(name = "programmer_id")
     private UserEntity user;
     @Column(name = "is_cdac_student", nullable = false)

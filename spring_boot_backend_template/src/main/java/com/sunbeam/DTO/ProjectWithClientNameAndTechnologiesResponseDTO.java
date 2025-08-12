@@ -20,7 +20,8 @@ public class ProjectWithClientNameAndTechnologiesResponseDTO {
     private double maxBudget;
     private Status status;
     private LocalDate deadline;
-//    private ClientProfileResponseDTO client;
-    private String clientName;
+    private ClientProfileResponseDTO client;
+//    private String firstName;
+//    private String lastName;
     List<TechnologyResponseDTO> technologies = new ArrayList<>();
 }

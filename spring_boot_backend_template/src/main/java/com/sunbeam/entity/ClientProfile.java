@@ -17,7 +17,7 @@ public class ClientProfile {
     @Id
     private Long clientId;
     @MapsId
-    @OneToOne
+    @OneToOne()
     @JoinColumn(name = "client_id")
     private UserEntity user;
 
