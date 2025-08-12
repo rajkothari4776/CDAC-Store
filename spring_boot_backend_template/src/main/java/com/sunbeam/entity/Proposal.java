@@ -2,14 +2,7 @@ package com.sunbeam.entity;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,7 +13,9 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString(callSuper = true)
-@Table(name="proposal")
+@Table(name="proposals",
+		uniqueConstraints = @UniqueConstraint(columnNames = {"project_id","programmer_id"}))
+
 public class Proposal {
 	
 	@Id
@@ -30,39 +25,31 @@ public class Proposal {
 	
 	@ManyToOne
 	@JoinColumn(name="project_id",nullable = false)
-	private Project myProposal;
+	private Project project;
 	
 	@ManyToOne
 	@JoinColumn(name="programmer_id",nullable = false)
-	private ProgrammerProfile myProposals;
-	
-	
-	
-	
-	
-	
+	private ProgrammerProfile programmer;
 	@Column(name="proposed_amount")
 	private Float proposedAmount;
 	@Column(name="proposed_duration_days")
 	private int proposedDurationDays;
 	@Column(name="cover_letter")
 	private String coverLetter;
-	private String status;
+
+	@Enumerated(EnumType.STRING)
+	private ProposalStatus status;
 	@Column(name="submitted_at")
 	private LocalDateTime submittedAt;
-	public Proposal(Project myProposal, Float proposedAmount, int proposedDurationDays, String coverLetter,
-			String status, LocalDateTime submittedAt) {
+	public Proposal(Project project, Float proposedAmount, int proposedDurationDays, String coverLetter,
+			ProposalStatus status, LocalDateTime submittedAt) {
 		super();
-		this.myProposal = myProposal;
+		this.project = project;
 		this.proposedAmount = proposedAmount;
 		this.proposedDurationDays = proposedDurationDays;
 		this.coverLetter = coverLetter;
 		this.status = status;
 		this.submittedAt = submittedAt;
 	}
-	
-	
-	
-	
 
 }

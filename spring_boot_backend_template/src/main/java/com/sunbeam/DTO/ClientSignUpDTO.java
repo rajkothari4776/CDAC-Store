@@ -31,7 +31,7 @@ public class ClientSignUpDTO{
     //	@NotNull(message = "toogle active or not active")
     private boolean active = true;
     @NotNull(message = "user role must be supplied")
-    private UserRole userRole = UserRole.CLIENT;
+    private UserRole userRole = UserRole.ROLE_CLIENT;
 
     @NotBlank(message = "company name must be supplied")
     private String companyName;

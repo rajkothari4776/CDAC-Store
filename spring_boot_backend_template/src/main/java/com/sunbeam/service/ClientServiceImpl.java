@@ -8,6 +8,7 @@ import com.sunbeam.entity.UserEntity;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,6 +18,7 @@ public class ClientServiceImpl implements ClientService{
 
     private final UserDao userDao;
     private final ModelMapper modelMapper;
+    private final PasswordEncoder passwordEncoder;
 
 
     @Override
@@ -26,7 +28,7 @@ public class ClientServiceImpl implements ClientService{
         }
         ClientProfile client = modelMapper.map(dto, ClientProfile.class);
         UserEntity u = modelMapper.map(dto, UserEntity.class);
-
+        u.setPassword(passwordEncoder.encode(dto.getPassword()));
         client.setUser(u);
         u.setClientProfile(client);
 

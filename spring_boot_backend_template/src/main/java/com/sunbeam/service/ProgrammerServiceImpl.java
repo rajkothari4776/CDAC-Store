@@ -13,6 +13,7 @@ import com.sunbeam.entity.UserEntity;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -24,6 +25,8 @@ public class ProgrammerServiceImpl implements ProgrammerService{
     private final UserDao userDao;
     private final TechnologyDao technologyDao;
     private final ModelMapper modelMapper;
+    private final PasswordEncoder passwordEncoder;
+
     @Override
     public ApiResponse signUp(ProgrammerSignUpDTO dto) {
         if(userDao.existsByEmail(dto.getEmail())){
@@ -31,9 +34,10 @@ public class ProgrammerServiceImpl implements ProgrammerService{
         }
         ProgrammerProfile programmer = modelMapper.map(dto, ProgrammerProfile.class);
         UserEntity u = modelMapper.map(dto, UserEntity.class);
+        u.setPassword(passwordEncoder.encode(dto.getPassword()));
 
         u.setProgrammerProfile(programmer);
-        programmer.setU(u);
+        programmer.setUser(u);
 
         UserEntity savedUser = userDao.save(u);
 
@@ -41,8 +45,8 @@ public class ProgrammerServiceImpl implements ProgrammerService{
     }
 
     @Override
-    public ApiResponse addSkills(ProgrammerSkillsDTO dto) {
-        ProgrammerProfile programmer = programmerDao.findById(dto.getProgrammerId())
+    public ApiResponse addSkills(Long programmerId, ProgrammerSkillsDTO dto) {
+        ProgrammerProfile programmer = programmerDao.findById(programmerId)
                 .orElseThrow(() -> new ResourceNotFoundException("programmer not found"));
 
         for(Long techId : dto.getSkillIds()){

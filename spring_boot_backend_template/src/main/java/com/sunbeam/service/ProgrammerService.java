@@ -11,6 +11,6 @@ import org.springframework.stereotype.Service;
 
 public interface ProgrammerService {
     ApiResponse signUp(ProgrammerSignUpDTO dto);
-    ApiResponse addSkills(ProgrammerSkillsDTO dto);
+    ApiResponse addSkills(Long programmerId,ProgrammerSkillsDTO dto);
 
 }

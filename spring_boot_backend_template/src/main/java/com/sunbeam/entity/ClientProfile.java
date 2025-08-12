@@ -1,19 +1,18 @@
 package com.sunbeam.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MapsId;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "client_profile")
 @Getter
 @Setter
+@ToString(exclude = "projects")
 public class ClientProfile {
     @Id
     private Long clientId;
@@ -30,4 +29,17 @@ public class ClientProfile {
     private String description;
     @Column(length = 30, nullable = false)
     private String city;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Project> projects = new ArrayList<>();
+
+    public void addProject(Project project) {
+        projects.add(project);
+        project.setClient(this);
+    }
+
+    public void removeProject(Project project) {
+        projects.remove(project);
+        project.setClient(null);
+    }
 }
