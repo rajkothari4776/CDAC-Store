@@ -41,4 +41,7 @@ public class ProposalController {
         Long clientId = Long.parseLong(auth.getName());
         return ResponseEntity.status(HttpStatus.CREATED).body(proposalService.acceptProposal(clientId, proposalId));
     }
+
+//    @GetMapping("client/{proposalId}/proposals")
+//    public ResponseEntity
 }

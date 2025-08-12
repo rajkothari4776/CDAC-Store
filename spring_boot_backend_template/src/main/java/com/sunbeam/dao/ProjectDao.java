@@ -21,6 +21,6 @@ public interface ProjectDao extends JpaRepository<Project,Long> {
     @Query("select p from Project p join fetch p.client join fetch p.technologies")
     List<Project> findProjectDetailsWithClientAndTechnologies();
 
-    @Query("select distinct p from Project p left join fetch p.client c left join fetch c.user left join fetch p.technologies where p.id= :id")
+    @Query("select distinct p from Project p left join fetch p.client c  left join fetch p.technologies where p.id= :id")
     Project findProjectById(Long id);
 }

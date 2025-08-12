@@ -84,6 +84,11 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public ProjectWithClientNameAndTechnologiesResponseDTO getProjectById(Long projectId) {
+//        Project project = projectDao.findById(projectId).orElseThrow(() -> new InvalidInputException("Invalid project id"));
+//        ProjectWithClientNameAndTechnologiesResponseDTO dto = modelMapper.map(projectDao.findProjectById(projectId), ProjectWithClientNameAndTechnologiesResponseDTO.class);
+//        dto.setFirstName(project.getClient().getUser().getFirstName());
+//        dto.setLastName(project.getClient().getUser().getLastName());
+//        return dto;
         return modelMapper.map(projectDao.findProjectById(projectId), ProjectWithClientNameAndTechnologiesResponseDTO.class);
     }
 
