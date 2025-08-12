@@ -38,8 +38,8 @@ public class ProjectAssignment {
 	@ManyToOne
 	@JoinColumn(name="programmer_id",nullable = false)
 	private ProgrammerProfile projectAssign;
-	
-	
+
+
 	@Column(name="assigned_at")
 	private LocalDateTime assignedAt;
 	
@@ -51,6 +51,5 @@ public class ProjectAssignment {
 	
 	@Column(name="is_paid")
 	private boolean isPaid;
-
 
 }

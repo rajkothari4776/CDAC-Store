@@ -1,5 +1,7 @@
 package com.sunbeam.entity;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -17,36 +19,44 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString(callSuper = true, exclude = {"projectTechnologies", "proposals"})
-@EqualsAndHashCode(of="id",callSuper = false)
+@ToString(callSuper = true, exclude = {"technologies", "proposals", "client"})
+@EqualsAndHashCode(callSuper = true, of="id")
 @Table(name = "projects")
 public class Project extends BaseEntity {
 	
-	
+	@Column(nullable = false, unique = true)
 	private String title;
 
+	@Column(nullable = false)
 	private String description;
-	
-	@Column(name="project_type")
+
+
+	@Column(name="project_type", nullable = true)
 	private String projectType;
 	
-	@Column(name="min_budget")
+	@Column(name="min_budget", nullable = false)
 	private double minBudget;
 	
-	@Column(name="max_budget")
+	@Column(name="max_budget", nullable = false)
 	private double maxBudget;
-	
+
+	@Enumerated(EnumType.STRING)
+	@Column(name="project_status", nullable = false)
 	private Status status;
-	@Column(name="estimated_duration_days")
-	private double estimatedDurationDays;
-	@Column(name="is_assigned")
-	private boolean isAssigned;
-	
+
+
+	private LocalDate deadline;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "client_id", nullable = false)
+	private ClientProfile client;
+
 //	@OneToMany(mappedBy = "myProject",cascade = CascadeType.ALL,orphanRemoval = true)
 //	private List<ProjectTechnology> projectTechnologies=new ArrayList<>();
-	
+
+
 		
-	@OneToMany(mappedBy = "myProposal",cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToMany(mappedBy = "project",cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Proposal> proposals=new ArrayList<>();
 	
 	@OneToMany(mappedBy = "myProjectAssigned",cascade = CascadeType.ALL,orphanRemoval = true)
@@ -70,10 +80,17 @@ public class Project extends BaseEntity {
 		technologies.remove(technology);
 		technology.getProjects().remove(this);
 	}
-	
-	
-	
-	
+
+	public void addProposal(Proposal proposal) {
+		proposals.add(proposal);
+		proposal.setProject(this);
+	}
+
+	public void removeProposal(Proposal proposal) {
+		proposals.remove(proposal);
+		proposal.setProject(null);
+	}
+
 	//add
 //	public void addProjectTechnology(ProjectTechnology projectTechnology) {
 //
@@ -90,7 +107,7 @@ public class Project extends BaseEntity {
 //	}
 
 	public Project(String title, String description, String projectType, Float minBudget, Float maxBudget,
-			Status status, int estimatedDurationDays, boolean isAssigned) {
+			Status status, LocalDate deadline) {
 		super();
 		this.title = title;
 		this.description = description;
@@ -98,9 +115,7 @@ public class Project extends BaseEntity {
 		this.minBudget = minBudget;
 		this.maxBudget = maxBudget;
 		this.status = status;
-		this.estimatedDurationDays = estimatedDurationDays;
-		this.isAssigned = isAssigned;
-//		this.projectTechnologies = projectTechnologies;
+		this.deadline = deadline;
 	}
 
 }

@@ -6,7 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,7 +24,7 @@ public class ProgrammerProfile{
     @MapsId
     @OneToOne
     @JoinColumn(name = "programmer_id")
-    private UserEntity u;
+    private UserEntity user;
     @Column(name = "is_cdac_student", nullable = false)
     private boolean cdacStudent;
     @Column(name = "experience_months", nullable = false)
@@ -37,9 +39,19 @@ public class ProgrammerProfile{
     @ManyToMany(mappedBy = "programmers", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     Set<Technology> technologies = new HashSet<>();
 
+    @OneToMany(mappedBy = "programmer", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Proposal> proposals = new ArrayList<>();
+
 //    @OneToMany(mappedBy = "programmer", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private Set<ProgrammerTechnology> technologies = new HashSet<>();
 
-
+    public void addProposal(Proposal proposal) {
+        proposals.add(proposal);
+        proposal.setProgrammer(this);
+    }
+    public void removeProposal(Proposal proposal) {
+        proposals.remove(proposal);
+        proposal.setProgrammer(null);
+    }
 
 }

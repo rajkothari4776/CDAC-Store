@@ -2,5 +2,5 @@ package com.sunbeam.entity;
 
 
 public enum UserRole {
-    PROGRAMMER, CLIENT
+    ROLE_PROGRAMMER, ROLE_CLIENT
 }

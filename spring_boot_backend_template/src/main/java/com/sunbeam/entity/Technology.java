@@ -11,7 +11,7 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
-@ToString(callSuper = true)
+@ToString(callSuper = false, exclude = {"programmers", "projects"})
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "Technologies")

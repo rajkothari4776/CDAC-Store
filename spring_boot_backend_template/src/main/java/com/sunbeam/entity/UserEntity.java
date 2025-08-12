@@ -4,12 +4,18 @@ package com.sunbeam.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @Table(name = "users")
-public class UserEntity extends BaseEntity{
+public class UserEntity extends BaseEntity implements UserDetails {
     @Column(name = "first_name", length = 30)
     private String firstName;
     @Column(name = "last_name", length = 30)
@@ -28,9 +34,20 @@ public class UserEntity extends BaseEntity{
     @Column(length = 30, name = "user_role")
     private UserRole userRole;
 
-    @OneToOne(mappedBy = "u", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private ProgrammerProfile programmerProfile;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private ClientProfile clientProfile;
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(this.userRole.name()));
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
 }

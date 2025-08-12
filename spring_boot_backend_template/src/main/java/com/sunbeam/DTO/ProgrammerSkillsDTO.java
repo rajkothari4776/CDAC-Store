@@ -13,6 +13,5 @@ import java.util.Set;
 @Setter
 @ToString
 public class ProgrammerSkillsDTO {
-    private Long programmerId;
     private ArrayList<Long> skillIds;
 }
