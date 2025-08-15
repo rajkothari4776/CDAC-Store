@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProposalDao extends JpaRepository<Proposal, Long> {
     @Query("select p from Proposal p left join fetch p.programmer pr left join fetch pr.technologies left join fetch p.project where p.project.id= :id")
@@ -23,5 +24,10 @@ public interface ProposalDao extends JpaRepository<Proposal, Long> {
     int rejectOtherProposal(@Param("proposalId") Long proposalId, @Param("projectId") Long projectId, @Param("clientId") Long clientId);
 
     @Query("select p.project.id from Proposal p where p.proposalId =:proposalId")
-        Long findProjectIdByProposalId(@Param("proposalId") Long proposalId);
+    Long findProjectIdByProposalId(@Param("proposalId") Long proposalId);
+
+    @Query("select p from Proposal p left join fetch p.programmer pr left join fetch pr.technologies where p.proposalId = :proposalId")
+    Optional<Proposal> findByProposalId(Long proposalId);
+
+
 }
