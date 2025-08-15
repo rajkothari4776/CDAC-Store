@@ -42,6 +42,9 @@ public class ProposalController {
         return ResponseEntity.status(HttpStatus.CREATED).body(proposalService.acceptProposal(clientId, proposalId));
     }
 
-//    @GetMapping("client/{proposalId}/proposals")
-//    public ResponseEntity
+    @GetMapping("/client/{proposalId}/proposal")
+    public ResponseEntity<?> getSingleProposal(@PathVariable Long proposalId){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return ResponseEntity.ok(proposalService.getProposalById(proposalId));
+    }
 }

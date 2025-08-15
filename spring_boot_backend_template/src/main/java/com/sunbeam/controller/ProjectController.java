@@ -69,5 +69,4 @@ public class ProjectController {
     public ResponseEntity<?> getProjectById(@PathVariable("projectId") Long projectId){
         return ResponseEntity.ok(projectService.getProjectById(projectId));
     }
-
 }

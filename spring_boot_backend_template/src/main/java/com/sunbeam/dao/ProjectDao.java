@@ -18,9 +18,11 @@ public interface ProjectDao extends JpaRepository<Project,Long> {
     List<Project> findProjectAndTechnologies(@Param("id") Long clientId);
 //    List<Project>findAllByClientClientId(Long clientId);
 
-    @Query("select p from Project p join fetch p.client join fetch p.technologies")
+    @Query("select p from Project p join fetch p.client join fetch p.technologies where p.status = com.sunbeam.entity.Status.OPEN")
     List<Project> findProjectDetailsWithClientAndTechnologies();
 
     @Query("select distinct p from Project p left join fetch p.client c  left join fetch p.technologies where p.id= :id")
     Project findProjectById(Long id);
+
+
 }

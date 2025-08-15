@@ -19,7 +19,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString(callSuper = true, exclude = {"technologies", "proposals", "client"})
+@ToString(callSuper = true, exclude = {"technologies", "proposals", "client", "projectAssignment"})
 @EqualsAndHashCode(callSuper = true, of="id")
 @Table(name = "projects")
 public class Project extends BaseEntity {
@@ -59,8 +59,11 @@ public class Project extends BaseEntity {
 	@OneToMany(mappedBy = "project",cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Proposal> proposals=new ArrayList<>();
 	
-	@OneToMany(mappedBy = "myProjectAssigned",cascade = CascadeType.ALL,orphanRemoval = true)
-	private List<ProjectAssignment> projectAssigned=new ArrayList<>();
+//	@OneToMany(mappedBy = "myProjectAssigned",cascade = CascadeType.ALL,orphanRemoval = true)
+//	private List<ProjectAssignment> projectAssigned=new ArrayList<>();
+    @OneToOne(mappedBy = "project", fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL)
+//    @ToString.Exclude
+    private ProjectAssignment projectAssignment;
 	
 
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)

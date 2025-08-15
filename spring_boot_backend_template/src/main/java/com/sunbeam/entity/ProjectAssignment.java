@@ -2,14 +2,7 @@ package com.sunbeam.entity;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,13 +24,19 @@ public class ProjectAssignment {
 	private Long assignmentId;
 	
 	
-	@ManyToOne
-	@JoinColumn(name="project_id",nullable = false)
-	private Project myProjectAssigned;
+	@OneToOne()
+    @ToString.Exclude
+	@JoinColumn(name="project_id", unique = true,nullable = false)
+	private Project project;
+
+    @OneToOne
+    @ToString.Exclude
+    @JoinColumn(name = "proposal_id", unique = true,nullable = false)
+    private Proposal proposal;
 	
-	@ManyToOne
-	@JoinColumn(name="programmer_id",nullable = false)
-	private ProgrammerProfile projectAssign;
+//	@ManyToOne
+//	@JoinColumn(name="programmer_id",nullable = false)
+//	private ProgrammerProfile projectAssign;
 
 
 	@Column(name="assigned_at")

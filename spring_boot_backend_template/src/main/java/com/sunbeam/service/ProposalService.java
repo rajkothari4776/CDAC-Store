@@ -15,4 +15,6 @@ public interface ProposalService {
     List<ProposalResponseDTO> getProposalByProjectId(Long projectId);
 
     ApiResponse acceptProposal(Long clientId, Long proposalId);
+
+    ProposalResponseDTO getProposalById(Long proposalId);
 }
