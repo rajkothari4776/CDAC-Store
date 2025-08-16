@@ -13,68 +13,11 @@ import { useEffect, useState } from "react";
 
 function ClientDashboard() {
     const[proposals, setProposals] = useState<Proposal[]>([]);
-    const stats = {
-        postedProjects: 8,
-        activeProjects: 3,
-        totalProposals: 45,
-        totalSpent: 125000,
-    }
+    
 
-    const recentProjects = [
-        {
-            id: 1,
-            title: "E-commerce Website for Electronics Store",
-            status: "in_progress",
-            proposalCount: 12,
-            budget: "₹45,000 - ₹65,000",
-            assignedTo: "Priya Sharma",
-            deadline: "2024-03-15",
-        },
-        {
-            id: 2,
-            title: "Mobile App for Restaurant Management",
-            status: "open",
-            proposalCount: 8,
-            budget: "₹80,000 - ₹120,000",
-            deadline: "2024-04-01",
-        },
-        {
-            id: 3,
-            title: "Inventory Management System",
-            status: "completed",
-            proposalCount: 15,
-            budget: "₹35,000",
-            assignedTo: "Rahul Kumar",
-            deadline: "2024-01-30",
-        },
-    ]
+    
 
-    const recentProposals = [
-        {
-            id: 1,
-            projectTitle: "Mobile App for Restaurant Management",
-            programmerName: "Amit Singh",
-            amount: "₹95,000",
-            duration: "60 days",
-            submittedAt: "2 hours ago",
-        },
-        {
-            id: 2,
-            projectTitle: "Mobile App for Restaurant Management",
-            programmerName: "Neha Patel",
-            amount: "₹88,000",
-            duration: "55 days",
-            submittedAt: "5 hours ago",
-        },
-        {
-            id: 3,
-            projectTitle: "E-commerce Website for Electronics Store",
-            programmerName: "Vikash Gupta",
-            amount: "₹58,000",
-            duration: "42 days",
-            submittedAt: "1 day ago",
-        },
-    ]
+    
 
     const getRecentProposals = async () => {
         const proposals: Proposal[] | null = await getAllProposal();

@@ -6,7 +6,7 @@ import { Code2 } from "lucide-react"
 export function Navbar() {
     return (
         <nav className="border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 w-full">
-            <div className=" px-6">
+            <div className="px-6">
                 <div className="flex h-16 items-center justify-between">
                     <Link to="/" className="flex items-center space-x-2">
                         <Code2 className="h-8 w-8 text-blue-600" />
