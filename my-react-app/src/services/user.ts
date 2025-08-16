@@ -44,7 +44,8 @@ import type { AuthResponse } from '@/types/AuthResponse';
 
 export async function loginUser(email:string, password:string): Promise<AuthResponse | null> {
     try {
-        const url = `${config.serverURL}/user/login`;
+        const url = `${config.serverURL}/user/login`;       
+        // const url = `http://13.232.135.89:8080/user/login`;
         const body = { email, password };
         
         const response = await axios.post(url, body);
