@@ -13,6 +13,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import java.util.List;
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -24,6 +26,16 @@ public class SecurityConfig {
     private JwtAuthEntryPoint jwtAuthEntryPoint;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
+
+        http.cors(cors -> cors.configurationSource(request -> {
+            var corsConfig = new org.springframework.web.cors.CorsConfiguration();
+            corsConfig.setAllowedOrigins(List.of("http://localhost:5173")); // frontend URL (removed trailing slash)
+            corsConfig.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+            corsConfig.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+            corsConfig.setAllowCredentials(true);
+            return corsConfig;
+        }));
+
         http.csrf(csrf -> csrf.disable());
         http.authorizeHttpRequests(
                 request ->request

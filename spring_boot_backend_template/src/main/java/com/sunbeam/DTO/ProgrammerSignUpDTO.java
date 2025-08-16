@@ -22,8 +22,8 @@ public class ProgrammerSignUpDTO{
     private String email;
     @NotBlank(message = "Password must be supplied")
     private String password;
-    @NotBlank(message = "confirm password must be supplied")
-    private String confirmPassword;
+//    @NotBlank(message = "confirm password must be supplied")
+//    private String confirmPassword;
     @NotBlank(message = "confirm password must be supplied")
     private String phoneNumber;
 

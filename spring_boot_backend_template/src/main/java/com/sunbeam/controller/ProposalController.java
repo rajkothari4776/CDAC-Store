@@ -47,4 +47,11 @@ public class ProposalController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return ResponseEntity.ok(proposalService.getProposalById(proposalId));
     }
+
+    @GetMapping("/client/proposals")
+    public ResponseEntity<?> getAllProposals(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Long clientId = Long.parseLong(auth.getName());
+        return ResponseEntity.ok(proposalService.getAllProposalsByClientId(clientId));
+    }
 }

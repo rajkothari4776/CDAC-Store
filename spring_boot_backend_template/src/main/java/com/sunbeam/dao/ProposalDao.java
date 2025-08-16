@@ -29,5 +29,8 @@ public interface ProposalDao extends JpaRepository<Proposal, Long> {
     @Query("select p from Proposal p left join fetch p.programmer pr left join fetch pr.technologies where p.proposalId = :proposalId")
     Optional<Proposal> findByProposalId(Long proposalId);
 
+    @Query("select p from Proposal p left join fetch p.project project left join fetch p.programmer pr left join fetch pr.technologies where p.project.client.clientId = :clientId")
+    List<Proposal> findAllByClientId(@Param("clientId") Long clientId);
+
 
 }

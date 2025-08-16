@@ -3,6 +3,7 @@ package com.sunbeam.service;
 import com.sunbeam.DTO.ApiResponse;
 import com.sunbeam.DTO.ProposalDTO;
 import com.sunbeam.DTO.ProposalResponseDTO;
+import com.sunbeam.DTO.ProposalResponseForFrontendDTO;
 import com.sunbeam.dao.ProgrammerDao;
 import com.sunbeam.dao.ProjectAssignmentDao;
 import com.sunbeam.dao.ProjectDao;
@@ -86,5 +87,13 @@ public class ProposalServiceImpl implements ProposalService{
         return modelMapper.map(proposalDao.findByProposalId(proposalId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid Proposal Id"))
                 , ProposalResponseDTO.class);
+    }
+
+    @Override
+    public List<ProposalResponseForFrontendDTO> getAllProposalsByClientId(Long clientId) {
+        return proposalDao.findAllByClientId(clientId)
+                .stream()
+                .map(proposal -> modelMapper.map(proposal, ProposalResponseForFrontendDTO.class))
+                .toList();
     }
 }
