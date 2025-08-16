@@ -1,11 +1,14 @@
 package com.sunbeam.controller;
 
 import com.sunbeam.DTO.ApiResponse;
+import com.sunbeam.DTO.AuthResponse;
 import com.sunbeam.DTO.UserSignInDTO;
 import com.sunbeam.Security.JwtUtils;
+import com.sunbeam.entity.UserEntity;
 import com.sunbeam.service.ProgrammerService;
 import com.sunbeam.service.UserService;
 import lombok.AllArgsConstructor;
+import org.apache.catalina.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -32,7 +35,10 @@ public class UserController {
         System.out.println(validAuthentication.getPrincipal());
         System.out.println("after "+validAuthentication.isAuthenticated());
 
-        return ResponseEntity.ok(jwtUtils.generateJwtToken(validAuthentication));
+        UserEntity user = (UserEntity) validAuthentication.getPrincipal();
+
+//        return ResponseEntity.ok(jwtUtils.generateJwtToken(validAuthentication));
+        return ResponseEntity.ok(new AuthResponse("Successfully logged in", jwtUtils.generateJwtToken(validAuthentication), user.getFirstName(), user.getLastName(), user.getEmail(),user.getUserRole()));
 
     }
 

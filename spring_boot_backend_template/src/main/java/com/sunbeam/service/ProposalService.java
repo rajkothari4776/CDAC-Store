@@ -3,6 +3,7 @@ package com.sunbeam.service;
 import com.sunbeam.DTO.ApiResponse;
 import com.sunbeam.DTO.ProposalDTO;
 import com.sunbeam.DTO.ProposalResponseDTO;
+import com.sunbeam.DTO.ProposalResponseForFrontendDTO;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -17,4 +18,6 @@ public interface ProposalService {
     ApiResponse acceptProposal(Long clientId, Long proposalId);
 
     ProposalResponseDTO getProposalById(Long proposalId);
+
+    List<ProposalResponseForFrontendDTO> getAllProposalsByClientId(Long clientId);
 }

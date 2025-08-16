@@ -15,7 +15,7 @@ import './App.css'
 //import Registration from "./auth/Registration.tsx";
 
 
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 //import Dashboard from "./pages/Dashboard";
 
 //import SignUp from "@/pages/SignUp.tsx";
@@ -51,6 +51,8 @@ import BrowseProjectsTest from './pages/programmer/BrowseProjectsTest.tsx';
 import ProfilePage from './pages/programmer/ProgrammerProfile.tsx';
 import ProjectDetails from './pages/programmer/ProjectDetails.tsx';
 import ViewMyProposals from './pages/programmer/ViewMyProposals.tsx';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // import BrowseProjects from "./pages/programmer/browseProjects";
     
@@ -69,6 +71,11 @@ import PostProjectForm from './pages/client/PostProject.tsx';
 import ProjectsPage from './pages/client/ProjectPageForClient.tsx';
 import ProgrammerDashboard from './pages/programmer/Dashboard.tsx';
 import MyProjects from './pages/client/MyProjects.tsx';
+import {useState } from 'react';
+import type { AuthResponse } from './types/AuthResponse.ts';
+import { AuthContext } from './contexts/auth.context.ts';
+import ClientHome from './pages/ClientHome.tsx';
+import ProgrammerHome from './ProgrammerHome.tsx';
 // import {myProjects} from './pages/client/MyProjects.tsx'
 // import BrowseProjects from "./pages/programmer/browseProjects";
 
@@ -82,26 +89,53 @@ import MyProjects from './pages/client/MyProjects.tsx';
 
 function App() {
   // const [count, setCount] = useState(0)
+  const [user, setUser] = useState<AuthResponse | null>(null);
 
   return (
     <>
 
       
-        <Routes>
+        <AuthContext.Provider value={{user, setUser}}>
+            <Routes>
             <Route
             path = '/'
             element = {<Dashboard/>}
             />
             <Route
-                path = '/client-signup'
+                path = 'client-signup'
                 element = {<CLientSignUp/>}
             />
             <Route
-                path = '/programmer-signup'
+                path = 'programmer-signup'
                 element = {<ProgrammerSignup/>}
             />
+
+            //Client Routes
+            <Route path='client' element ={user?.userRole === "ROLE_CLIENT" ? <ClientHome/> : <Navigate to="/signin"/>} >
+                <Route
+                    path = 'dashboard'
+                    element = {<ClientDashboard/>}
+                />
+                <Route
+                    path = 'my-projects'
+                    element = {<MyProjects/>}
+                />
+                <Route
+                    path = 'project-page'
+                    element = {<ProjectsPage/>}
+                />
+                <Route
+                    path = 'profile'
+                    element = {<ClientProfile/>}
+                />
+            </Route>
+
+            //Programmer Routes
+            <Route path='programmer' element ={user?.userRole === "ROLE_PROGRAMMER" ? <ProgrammerHome/> : <Navigate to="signin"/>} >
+            </Route>
+
             <Route
-                path = '/signin'
+                path = 'signin'
                 element = {<Login/>}
             />
             <Route
@@ -129,10 +163,10 @@ function App() {
                 element = {<ClientProfile/>}
             />
 
-             <Route
-                path = '/client-dashboard'
+             {/* <Route
+                path = 'client-dashboard'
                 element = {<ClientDashboard/>}
-            />
+            /> */}
 
             <Route
                 path = '/client-project'
@@ -157,7 +191,7 @@ function App() {
             />
 
             <Route
-                path = '/programmerDashboard'
+                path = 'programmer-dashboard'
                 element = {<ProgrammerDashboard/>}
             />
             
@@ -167,7 +201,10 @@ function App() {
               
 
         </Routes>
+        </AuthContext.Provider>
         {/* <Toaster richColors/> */}
+        <ToastContainer />
+
     </>
   )
 }

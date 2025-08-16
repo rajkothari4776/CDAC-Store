@@ -10,17 +10,20 @@ import {Label} from "@radix-ui/react-label";
 // import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox.tsx"
 import {Textarea} from "@/components/ui/textarea.tsx";
+import { registerProgrammer } from "@/services/programmer";
+import type { ApiResponse } from "@/types/ApiResponse";
+import { toast } from "sonner";
 // import { Label } from "@/components/ui/label";
 // import {Toaster} from "sonner";
 
 
 function SignUp(){
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
-    const [phone, setPhone] = useState("")
+    const [firstName, setFirstName] = useState<string>("")
+    const [lastName, setLastName] = useState<string>("")
+    const [email, setEmail] = useState<string>("")
+    const [password, setPassword] = useState<string>("")
+    const [confirmPassword, setConfirmPassword] = useState<string>("")
+    const [phone, setPhone] = useState<string>("")
 
     // Client fields
     // const [companyName, setCompanyName] = useState("")
@@ -31,15 +34,38 @@ function SignUp(){
     const navigate= useNavigate();
 
     //programmer fields
-    const [isCdacStudent, setIsCdacStudent] = useState(false)
-    const [experienceYears, setExperienceYears] = useState("")
-    const [hourlyRate, setHourlyRate] = useState("")
-    const [bio, setBio] = useState("")
-    const [githubUrl, setGithubUrl] = useState("")
+    const [isCdacStudent, setIsCdacStudent] = useState<boolean>(false)
+    const [experienceYears, setExperienceYears] = useState<string>("")
+    const [hourlyRate, setHourlyRate] = useState<string>("")
+    const [bio, setBio] = useState<string>("")
+    const [githubUrl, setGithubUrl] = useState<string>("")
 
     const onBack = ():void => {
         navigate(-1);
     }
+
+    const onRegister = async() => {
+        const result: ApiResponse | null = await registerProgrammer({
+            firstName,
+            lastName,
+            email,
+            password,
+            phoneNumber: phone,
+            cdacStudent: isCdacStudent,
+            experience: Number(experienceYears),
+            available: true,
+            bio,
+            github: githubUrl
+        });
+
+        if(!result){
+            toast.error("Failed to register programmer");
+        }else{
+            toast.success(result.message);
+        }
+    }
+    
+
     return (
         <div className={"min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4"}>
             <Card className="w-full max-w-2xl">
@@ -156,7 +182,8 @@ function SignUp(){
                         </div>
 
 
-                        <Button type="submit" className="w-full mt-7" >
+                        <Button onClick={onRegister}
+                         type="submit" className="w-full mt-7" >
                             Create Account
                         </Button>
                     </form>

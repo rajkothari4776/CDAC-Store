@@ -6,6 +6,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -15,6 +16,7 @@ import java.io.IOException;
 
 @Component
 @AllArgsConstructor
+@Slf4j
 public class CustomJWTFilter extends OncePerRequestFilter {
     private final JwtUtils jwtUtils;
     @Override
@@ -22,15 +24,16 @@ public class CustomJWTFilter extends OncePerRequestFilter {
                                     HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         String headerValue = request.getHeader("Authorization");
-        if(headerValue != null && headerValue.startsWith("Bearer")) {
+        if(headerValue != null && headerValue.startsWith("Bearer ")) {
             String jwt = headerValue.substring(7);
-            Authentication populatedAuthenticationTokenFromJWT
+            log.info("JWT in request: {} ",jwt);
+            Authentication authentication
                     = jwtUtils.populateAuthencationTokenFromJWT(jwt);
-            System.out.println(populatedAuthenticationTokenFromJWT);
+            System.out.println("auth object from JWT{} "+authentication);
 
             SecurityContextHolder
                     .getContext()
-                    .setAuthentication(populatedAuthenticationTokenFromJWT);
+                    .setAuthentication(authentication);
         }
 
         filterChain.doFilter(request,response);
